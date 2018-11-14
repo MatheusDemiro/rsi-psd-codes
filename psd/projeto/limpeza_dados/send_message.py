@@ -3,7 +3,7 @@ import pika
 
 credentials = pika.PlainCredentials('mpsd', 'mpsd')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-               'localhost', 5672, 'psd', credentials))
+               'localhost', 5672, 'psd-2018-2', credentials))
 
 def sendMessage(message):
     channel = connection.channel()
