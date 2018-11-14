@@ -1,10 +1,13 @@
 import csv
 import time
-from projeto.limpeza_dados.send_message import sendMessage,connection
+from send_message import sendMessage,connection
 
 def publish(data):
-    message = "timestamp_pasto: %s; tbs: %s; ur: %s; tgn: %s; tpo: %s" %(data['timestamp_pasto'], data['tbs'], data['ur'], data['tgn'],
-                                                                        data['tpo'])
+    if data['tgn'] == "-":
+        message = '{"ts": %d, "values":{"tbs": %.3f, "ur": %.3f, "tpo": %.3f}}' %(int(data['timestamp_pasto'])*1000, int(data['tbs'])/1000, int(data['ur'])/1000, int(data['tpo'])/1000)
+    else:
+        message = '{"ts": %d, "values":{"tbs": %.3f, "ur": %.3f, "tgn": %.3f, "tpo": %.3f}}' % (int(data['timestamp_pasto']) * 1000, int(data['tbs']) / 1000, int(data['ur']) / 1000,
+                                                                                                int(data['tgn']) / 1000,int(data['tpo']) / 1000)
     print(sendMessage(message))
 
 tabela_clima = open("arquivos/pasto2.csv", "r")
