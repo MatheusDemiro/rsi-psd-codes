@@ -1,57 +1,56 @@
-import findspark
 from pyspark.ml import Pipeline
 from pyspark.ml.classification import RandomForestClassifier
-from pyspark.ml.feature import IndexToString, StringIndexer, VectorIndexer, VectorAssembler
+from pyspark.ml.feature import IndexToString, StringIndexer, VectorIndexer
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.sql import SparkSession
-from pyspark.sql.types import *
 
-def convertColumn(df, names, newType):
-    for name in names:
-        if name == 'ts':
-            df = df.withColumn(name, df[name].cast(IntegerType()))
-        else:
-            df = df.withColumn(name, df[name].cast(newType))
-    return df
+import findspark
 
-findspark.init("/Users/victormedeiros/PycharmProjects/rsi-psd-codes/spark-2.4.0-bin-hadoop2.7")
+findspark.init("/home/rsi-psd-vm/spark-2.2.0-bin-hadoop2.7")
 
 spark = SparkSession.builder\
     .master("local")\
-    .appName("Spark Demo")\
+    .appName("Test Spark")\
     .getOrCreate()
 
-data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/Users/victormedeiros/PycharmProjects/rsi-psd-codes/psd/random-forest-example/data-input.csv")
+# Load and parse the data file, converting it to a DataFrame.
+data = spark.read.format("csv").load("/home/rsi-psd-vm/Downloads/dados-psd-2018-2.csv")
 
-data = convertColumn(data, data.columns[:-1], DoubleType())
+# Index labels, adding metadata to the label column.
+# Fit on whole dataset to include all labels in index.
+labelIndexer = StringIndexer(inputCol="Classe", outputCol="indexedLabel").fit(data)
 
-vecAssembler = VectorAssembler(inputCols=data.columns[:-1], outputCol="features").setHandleInvalid("keep")
+# Automatically identify categorical features, and index them.
+# Set maxCategories so features with > 4 distinct values are treated as continuous.
+featureIndexer = VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(data)
 
-labelIndexer = StringIndexer(inputCol="classe", outputCol="indexedLabel").fit(data)
-
-featureIndexer = VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4)
-
+# Split the data into training and test sets (30% held out for testing)
 (trainingData, testData) = data.randomSplit([0.7, 0.3])
 
-rf = RandomForestClassifier(labelCol="indexedLabel", featuresCol="indexedFeatures", numTrees=100)
+# Train a RandomForest model.
+rf = RandomForestClassifier(labelCol="indexedLabel", featuresCol="indexedFeatures", numTrees=10)
 
+# Convert indexed labels back to original labels.
 labelConverter = IndexToString(inputCol="prediction", outputCol="predictedLabel",
                                labels=labelIndexer.labels)
 
-pipeline = Pipeline(stages=[vecAssembler, labelIndexer, featureIndexer, rf, labelConverter])
+# Chain indexers and forest in a Pipeline
+pipeline = Pipeline(stages=[labelIndexer, featureIndexer, rf, labelConverter])
 
+# Train model.  This also runs the indexers.
 model = pipeline.fit(trainingData)
 
+# Make predictions.
 predictions = model.transform(testData)
 
-predictions.select("predictedLabel", "classe", "features").show(5)
+# Select example rows to display.
+predictions.select("predictedLabel", "label", "features").show(5)
 
+# Select (prediction, true label) and compute test error
 evaluator = MulticlassClassificationEvaluator(
     labelCol="indexedLabel", predictionCol="prediction", metricName="accuracy")
 accuracy = evaluator.evaluate(predictions)
 print("Test Error = %g" % (1.0 - accuracy))
 
 rfModel = model.stages[2]
-print(rfModel)
-#for i in data.collect():
-#    print(i)
+print(rfModel)  # summary only
