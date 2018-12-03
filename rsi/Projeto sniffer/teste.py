@@ -14,7 +14,7 @@ def header(data):
 
     return dic, MAC, TS
 
-data = openFile("C:\\Users\\User\\PycharmProjects\\sniffer_rsi\\data_sniffer.txt")
+data = openFile("C:\\Users\\User\\Documents\\GitKraken\\rsi-psd-codes\\rsi\\Projeto sniffer\\data_sniffer.txt")
 dic,currentMAC, windowTS = header(data)
 currentTS = windowTS
 windows = [] #Lista com todos os dados coletados durante a janela
@@ -37,4 +37,4 @@ for i in data:
             windowTS = int(TS)
             dic = {MAC:(int(RSSI),1)}
             currentTS = int(TS)
-            
+    print(dic)

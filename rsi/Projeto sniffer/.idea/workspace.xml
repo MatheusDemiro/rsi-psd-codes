@@ -11,10 +11,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="connection_serial.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="connection_serial.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/connection_serial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="-664">
               <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teste.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="teste.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/teste.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="38" column="31" selection-start-line="21" selection-start-column="4" selection-end-line="38" selection-end-column="31" />
+            <state relative-caret-position="347">
+              <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -44,8 +44,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/teste.py" />
         <option value="$PROJECT_DIR$/connection_serial.py" />
+        <option value="$PROJECT_DIR$/teste.py" />
       </list>
     </option>
   </component>
@@ -65,8 +65,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="sniffer_rsi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sniffer_rsi" type="462c0819:PsiDirectoryNode" />
+              <item name="Projeto sniffer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projeto sniffer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -90,7 +90,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.connection_serial">
+  <component name="RunManager" selected="Python.teste">
     <configuration name="connection_serial" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sniffer_rsi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,8 +133,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.connection_serial" />
         <item itemvalue="Python.teste" />
+        <item itemvalue="Python.connection_serial" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +167,7 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.50165015" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2920792" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32838285" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -229,20 +229,20 @@
     <entry file="file://$PROJECT_DIR$/data_sniffer.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/teste.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="38" column="31" selection-start-line="21" selection-start-column="4" selection-end-line="38" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/connection_serial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="-664">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teste.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
         </state>
       </provider>
     </entry>
