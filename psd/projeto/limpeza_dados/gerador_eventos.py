@@ -1,6 +1,6 @@
 import csv
 import time
-from send_message import sendMessage,connection
+from projeto.limpeza_dados.send_message import sendMessage,connection
 
 def publish(data):
     if data['tgn'] == "-":
@@ -10,7 +10,7 @@ def publish(data):
                                                                                                 int(data['tgn']) / 1000,int(data['tpo']) / 1000)
     print(sendMessage(message))
 
-tabela_clima = open("arquivos/pasto2.csv", "r")
+tabela_clima = open("arquivos/novos_arquivos/pasto.csv", "r")
 
 try:
     data = csv.reader(tabela_clima, delimiter=";")
