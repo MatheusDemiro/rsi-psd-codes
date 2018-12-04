@@ -21,7 +21,7 @@ spark = SparkSession.builder\
     .appName("Spark Demo")\
     .getOrCreate()
 
-data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/projeto/limpeza_dados/arquivos/novos_arquivos/dados_finais.csv")
+data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/dados_finais.csv")
 
 data = convertColumn(data, data.columns[:-1], DoubleType())
 
@@ -51,7 +51,7 @@ predictions.select("predictedLabel", "classe", "features").show(5)
 evaluator = MulticlassClassificationEvaluator(
     labelCol="indexedLabel", predictionCol="prediction", metricName="accuracy")
 accuracy = evaluator.evaluate(predictions)
-print("Test Error = %g" % (1.0 - accuracy))
+print("Test Accuracy Rate: %g\nTest Error Rate: %g" % (accuracy, 1.0 - accuracy))
 
 rfModel = randomForestModel.stages[2]
 print(rfModel)

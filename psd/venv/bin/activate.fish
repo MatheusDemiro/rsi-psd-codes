@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/venv"
+set -gx VIRTUAL_ENV "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

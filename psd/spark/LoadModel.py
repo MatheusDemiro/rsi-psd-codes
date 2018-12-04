@@ -1,7 +1,27 @@
+import csv
 from pyspark.ml import PipelineModel
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
+
+spark = SparkSession.builder\
+    .master("local")\
+    .appName("Spark Demo")\
+    .getOrCreate()
+
+def convertCSV(dictionary):
+    # keys, values = '', ''
+    # for k, v in dictionary.items():
+    #   keys+=k+','
+    #   values+=v+','
+    # return "%s\n%s"%(keys[:-1], values[:-1])
+    path = '/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/data.csv'
+    keys = dictionary.keys()
+    with open(path,'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows([dictionary])
+    return path
 
 def convertColumn(df, names):
     for name in names:
@@ -11,27 +31,33 @@ def convertColumn(df, names):
             df = df.withColumn(name, df[name].cast(DoubleType()))
     return df
 
-spark = SparkSession.builder\
-    .master("local")\
-    .appName("Spark Demo")\
-    .getOrCreate()
+#pathOrigin = "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/dados_finais.csv"
 
-data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/projeto/limpeza_dados/arquivos/novos_arquivos/dados_finais.csv")
+def applyModel(dictionary):
+    #converter dicionário em csv
+    path_csv = convertCSV(dictionary)
 
-data = convertColumn(data, data.columns[:-1])
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(path_csv)
 
-path = "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/spark/model"
+    data = convertColumn(data, data.columns[:-1])
 
-randomForestModel = PipelineModel.read().load(path)
+    data.show() #linha teste
 
-predictions = randomForestModel.transform(data)
+    randomForestModel = PipelineModel.read().load('/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/spark/model')
 
-predictions.select("predictedLabel", "classe", "features").show(287, False)
+    predictions = randomForestModel.transform(data)
 
-evaluator = MulticlassClassificationEvaluator(
-    labelCol="indexedLabel", predictionCol="prediction", metricName="accuracy")
-accuracy = evaluator.evaluate(predictions)
-print("Test Accuracy Rate: %g\nTest Error Rate: %g" % (accuracy, 1.0 - accuracy))
+    #predictions.select("predictedLabel", "classe", "features").show(287, False)
 
-rfModel = randomForestModel.stages[2]
-print(rfModel)
+    predictions.select("predictedLabel").show() #DataFrame
+
+    return "OI"
+
+    # evaluator = MulticlassClassificationEvaluator(
+    #     labelCol="indexedLabel", predictionCol="prediction", metricName="accuracy")
+    # accuracy = evaluator.evaluate(predictions)
+    #
+    # print("Test Accuracy Rate: %g\nTest Error Rate: %g" % (accuracy, 1.0 - accuracy))
+    #
+    # rfModel = randomForestModel.stages[2]
+    # print(rfModel)

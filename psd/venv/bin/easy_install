@@ -1,4 +1,4 @@
-#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/venv/bin/python
+#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/venv/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'setuptools==39.1.0','console_scripts','easy_install'
 __requires__ = 'setuptools==39.1.0'
 import re

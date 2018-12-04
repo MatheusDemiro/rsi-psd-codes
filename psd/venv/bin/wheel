@@ -1,4 +1,4 @@
-#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/venv/bin/python
+#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/venv/bin/python
 
 # -*- coding: utf-8 -*-
 import re

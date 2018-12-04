@@ -1,4 +1,4 @@
-#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/venv/bin/python
+#!/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/venv/bin/python
 # See http://cens.ioc.ee/projects/f2py2e/
 from __future__ import division, print_function
 

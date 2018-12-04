@@ -1,6 +1,6 @@
 import csv
 import time
-from projeto.limpeza_dados.send_message import sendMessage,connection
+from projeto.clearData.sendMessageCsvToRabbit import sendMessage,connection
 
 def publish(data):
     if data['tgn'] == "-":
