@@ -4,45 +4,36 @@ from pyspark.ml import PipelineModel
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 
-PATH_CSV = "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/data.csv"
+#PATH_CSV = "/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/data.csv"
 
-spark = SparkSession.builder\
-    .master("local")\
-    .appName("Spark Demo")\
-    .getOrCreate()
+# def saveFile(csv):
+#     try:
+#         arq = open(PATH_CSV, "w")
+#         arq.write(csv)
+#         arq.close()
+#         return True
+#     except Exception:
+#         return False
+#
+# def convertColumn(df, names):
+#     for name in names:
+#         if name == 'ts':
+#             df = df.withColumn(name, df[name].cast(IntegerType()))
+#         else:
+#             df = df.withColumn(name, df[name].cast(DoubleType()))
+#     return df
 
-def saveFile(csv):
-    try:
-        arq = open(PATH_CSV, "w")
-        arq.write(csv)
-        arq.close()
-        return True
-    except Exception:
-        return False
+def applyModel(data):
+    #data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(PATH_CSV)
 
-def convertColumn(df, names):
-    for name in names:
-        if name == 'ts':
-            df = df.withColumn(name, df[name].cast(IntegerType()))
-        else:
-            df = df.withColumn(name, df[name].cast(DoubleType()))
-    return df
+    data.show() #linha teste
 
-def applyModel(csv):
-    if saveFile(csv):
-        data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load(PATH_CSV)
+    randomForestModel = PipelineModel.read().load('/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/spark/model')
 
-        data = convertColumn(data, data.columns[:-1])
+    predictions = randomForestModel.transform(data)
 
-        data.show() #linha teste
+    predict = predictions.select("predictedLabel") #DataFrame
 
-        randomForestModel = PipelineModel.read().load('/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/spark/model')
+    result = predict.toJSON().map(lambda j: json.loads(j)).collect()
 
-        predictions = randomForestModel.transform(data)
-
-        predict = predictions.select("predictedLabel") #DataFrame
-
-        result = predict.toJSON().map(lambda j: json.loads(j)).collect()
-
-        return result[0]['predictedLabel']
-    return "Error"
+    return result[0]['predictedLabel']
