@@ -22,7 +22,7 @@ def setTimestamp(data):
 #     return dic
 #
 comport = serial.Serial('com10', 115200)
-arq = open("data_sniffer.txt", "w+")
+arq = open("COLETA_FBD_14-12-18.txt", "w+")
 #
 # dic, MAC, windowTS = header(comport.readline())
 # currentTS = windowTS
