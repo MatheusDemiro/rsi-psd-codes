@@ -21,8 +21,8 @@ def setTimestamp(data):
 #         dic[i] = (sum(temp[0])/temp[1], temp[1])
 #     return dic
 #
-comport = serial.Serial('com10', 115200)
-arq = open("COLETA_FBD_14-12-18.txt", "w+")
+comport = serial.Serial('com7', 115200)
+arq = open("COLETA_PBD_21-12-18.txt", "w+")
 #
 # dic, MAC, windowTS = header(comport.readline())
 # currentTS = windowTS

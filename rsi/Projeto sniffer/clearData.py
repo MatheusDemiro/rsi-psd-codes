@@ -53,7 +53,7 @@ def average(dic):
          dic[i] = (sum(temp[0])/temp[1], temp[1])
      return dic
 
-data = openFile(os.getcwd()+"\\COLETA_PBD_13-12-18.txt") #Abrindo arquivo com as coletas
+data = openFile(os.getcwd()+"\\COLETA_PBD_21-12-18.txt") #Abrindo arquivo com as coletas
 dic,currentMAC, windowTS = header(data) #Salvando informacoes da primeira linha do arquivo
 currentTS = windowTS
 #Intel Corporate (PC LAB) = 84-34-97/60-67-20(wi-fi)
@@ -90,7 +90,6 @@ for i in data:
         dic = {MAC: ([int(RSSI)], 1)} #Preparando dicionario para a proxima janela
         currentTS = int(TS)
 
-print(intelCorporateMACWindow)
 saveAllObjects(fakeMACWindow, intelCorporateMACWindow, windows) #Salvando dicionários e listas
 
 #Para deteccoes com media de RSSI maior que 85 obtemos um totalRepetitions de 42 pacotes capturados, sendo que apenas 32 (16 pessoas e 16 maquinas)

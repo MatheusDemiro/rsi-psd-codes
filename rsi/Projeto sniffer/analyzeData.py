@@ -7,7 +7,7 @@ def getAllPacketsWindow(windows):
     while count < len(windows):
         packets = 0
         for i in windows[count].keys():
-            if windows[count][i][1] > 19:
+            if windows[count][i][1] > 10 and windows[count][i][0] <= -60:
                 packets += 1
         off['result'][count] -= packets
         count += 1
@@ -101,4 +101,7 @@ print("\n#######################################################################
 totalOff()
 getAllPacketsWindow(windows)
 print("\n#############################################################################==#############################################################################\n")
-getFinalResult()
+#getFinalResult()
+
+for i in windows:
+    print(len(i))
