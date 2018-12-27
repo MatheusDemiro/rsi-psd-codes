@@ -10,16 +10,12 @@ def openFile(path):
     return data
 
 #Metodo que salva as listas com os dados limpos
-def saveAllObjects(fakeMACWindow, intelCorporateMACWindow, windows):
-    arq, arq1, arq2 = open("WINDOWS.pickle", "wb"), open("fakeMACWindow.pickle", "wb"), open("intelCorporateMACWindow.pickle", "wb")
+def saveWindows(windows):
+    arq = open("WINDOWS.pickle", "wb")
 
     p.dump(windows, arq)
-    p.dump(fakeMACWindow, arq1)
-    p.dump(intelCorporateMACWindow, arq2)
 
     arq.close()
-    arq1.close()
-    arq2.close()
 
 #Metodo que retorna as informacoes da primeira linha do arquivo para servir como referencia ao andamenta da limpeza dos dados
 def header(data):
@@ -46,7 +42,7 @@ def validateMAC(MAC):
             return False
         return True
 
-#Metodo que calcula a média do RSSI de cada tupla ([RSSI],freq)
+#Metodo que calcula a media do RSSI de cada tupla ([RSSI],freq)
 def average(dic):
      for i in dic:
          temp = dic[i]
@@ -65,32 +61,31 @@ intelCorporateMACWindow: lista auxiliar que salva temporariamente os enderecos M
 intelCorporateMACWindow: lista com todos os enderecos MACs da Intel Corporate (computadores do laboratorios)
 windows: lista com todos os dados coletados durante a janela
 '''
-allFakeMAC, fakeMACWindow, allIntelCorporateMAC, intelCorporateMACWindow, windows = [], [], [], [], []
+windows = []
 for i in data:
     RSSI,MAC,TS = i[:-1].split(",")
     currentMAC = MAC
     if (int(TS) - windowTS) < 300:
-        if validateMAC(currentMAC):
-            if currentMAC in dic:
-                temp = dic[currentMAC]
-                temp[0].append(int(RSSI))
-                dic[currentMAC] = (temp[0], temp[1] + 1)
-            else:
-                dic[currentMAC] = ([int(RSSI)], 1)
-            currentTS = int(TS)
+        if currentMAC in dic:
+            temp = dic[currentMAC]
+            temp[0].append(int(RSSI))
+            dic[currentMAC] = (temp[0], temp[1] + 1)
         else:
-                if MAC not in allFakeMAC: #Filtrando apenas as capturas unicas do probe request (OBS.: para saber quantos foram capturados e nao a frequencia.)
-                    allFakeMAC.append(MAC)
+            dic[currentMAC] = ([int(RSSI)], 1)
+        currentTS = int(TS)
+        # else:
+        #         if MAC not in allFakeMAC: #Filtrando apenas as capturas unicas do probe request (OBS.: para saber quantos foram capturados e nao a frequencia.)
+        #             allFakeMAC.append(MAC)
     else:  #Janela de tempo de 5 minutos
-        fakeMACWindow.append(allFakeMAC)
-        intelCorporateMACWindow.append(allIntelCorporateMAC)
-        allFakeMAC, allIntelCorporateMAC = [], [] #Limpando arrays para capturar a próxima janela
+        # fakeMACWindow.append(allFakeMAC)
+        # intelCorporateMACWindow.append(allIntelCorporateMAC)
+        # allFakeMAC, allIntelCorporateMAC = [], [] #Limpando arrays para capturar a próxima janela
         windows.append(average(dic))
         windowTS = int(TS)
         dic = {MAC: ([int(RSSI)], 1)} #Preparando dicionario para a proxima janela
         currentTS = int(TS)
 
-saveAllObjects(fakeMACWindow, intelCorporateMACWindow, windows) #Salvando dicionários e listas
+saveWindows(windows) #Salvando janela
 
 #Para deteccoes com media de RSSI maior que 85 obtemos um totalRepetitions de 42 pacotes capturados, sendo que apenas 32 (16 pessoas e 16 maquinas)
 #correspondem a realidade da sala de aula (observacao).

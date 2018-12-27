@@ -1,13 +1,40 @@
 import pickle as p
 
-#Metodo que exibe a quantidade de pacotes capturados por janela
-def getAllPacketsWindow(windows):
-    print("\nQUANTIDADE TOTAL DE ENDERECOS CAPTURADOS POR JANELA (FREQ. 19)\n")
+#Metodo que retorna a lista com as janelas de captura limpas
+def clearMAC(windows):
     count = 0
+    clearWindows = []
     while count < len(windows):
+        auxFake, auxWindow, auxIntel = [], {}, []
+        for MAC in windows[count]:
+            mac = MAC.split(":")
+            result = "0x" + mac[0]
+            if int(result, 16) & 2 == 2:  #MAC local (falso)
+                auxFake.append(MAC)
+                continue
+            else:  #MAC universal
+                if ":".join(mac[:3]) == "60:67:20":  #Se for do fornecedor "Intel Corporate"
+                    if MAC not in auxIntel:
+                        auxIntel.append(MAC)
+                        continue
+            auxWindow[MAC] = windows[count][MAC]
+        count+=1
+        if auxFake == []:
+            auxFake.append(0)
+        elif auxIntel == []:
+            auxIntel.append(0)
+        fakeMACWindow.append(auxFake);clearWindows.append(auxWindow);intelCorporateMACWindow.append(auxIntel)
+
+    return clearWindows
+
+#Metodo que exibe a quantidade de pacotes capturados por janela
+def getAllPacketsWindow(dic):
+    print("QUANTIDADE TOTAL DE ENDERECOS CAPTURADOS POR JANELA (FREQ. 15)\n")
+    count = 0
+    while count < len(dic):
         packets = 0
-        for i in windows[count].keys():
-            if windows[count][i][1] > 10 and windows[count][i][0] <= -60:
+        for i in dic[count].keys():
+            if dic[count][i][1] >= 15 and dic[count][i][0] <= -75:
                 packets += 1
         off['result'][count] -= packets
         count += 1
@@ -23,14 +50,14 @@ def analysisFakeMACWindows(arrayMAC):
     while count < len(arrayMAC):
         window += 1
         aux = len(arrayMAC[count])
-        print("Janela %d: %d enderecos MACs falsos" % (window, aux))
+        print("Janela %d: %d enderecos MACs falsos de %d MACs capturados" % (window, aux, len(windows[count])))
         for i in arrayMAC[count]:
             if i not in arrayAux:
                 arrayAux.append(i)
         count+=1
         total+=aux
         off['fakeMAC'][count] = aux
-
+    
     print("\nTotal de enderecos MACs falsos (com repeticoes): %d" % (total))
     print("Total de enderecos MACs falsos (sem repeticoes): %d" % (len(arrayAux)))
 
@@ -64,22 +91,12 @@ def totalOff():
     valuesF, valuesI = list(off['fakeMAC'].values()), list(off['intelC'].values())
     count = 0
     off['result'] = {}
-    while count < len(valuesF):
+    while count < len(fakeMACWindow):
         aux = valuesF[count]+valuesI[count]
         print("Janela %d: %d enderecos MACs a ser desconsiderados."%(count+1, aux))
         off['result'][count] = aux
         count+=1
     return
-
-#Metodo que retorna todos os arrays e dicionarios utilizados para analise
-def openAllArqs():
-    arq, arq1, arq2 = open("WINDOWS.pickle", "rb"), open("fakeMACWindow.pickle", "rb"),open("intelCorporateMACWindow.pickle", "rb")
-    x, y, z = p.load(arq), p.load(arq1), p.load(arq2)
-    arq.close()
-    arq1.close()
-    arq2.close()
-
-    return x,y,z
 
 #Metodo que exibe o resultado final da analise, sendo subtraidos os valores: (total de MACs a serem desconsiderados por janela)-(total de capturas por) janela
 def getFinalResult():
@@ -88,20 +105,29 @@ def getFinalResult():
         aux = off['result'][i]
         if aux < 0:
             aux *=(-1)
-        print("Janela %d: %d enderecos MACs a serem considerados."%(i+1, aux))
+        print("Janela %d: %d enderecos MACs a serem considerados."%(i+1, abs(len(windows[i])-aux)))
     return
 
-windows, fakeMACwindow, intelCorporateMACWindow = openAllArqs()
+#Metodo que retorna todos os arrays e dicionarios utilizados para analise
+def openWindows():
+    arq = open("WINDOWS.pickle", "rb")
+
+    temp = p.load(arq)
+    arq.close()
+
+    return temp
+
+allIntelCorporateMAC, fakeMACWindow, intelCorporateMACWindow = [], [],[]
+windows = openWindows()
+clearWindows = clearMAC(windows)
 off = {}
 
-analysisFakeMACWindows(fakeMACwindow)
+analysisFakeMACWindows(fakeMACWindow)
 print("\n#############################################################################==#############################################################################\n")
 analysisIntelCorporateMAC(intelCorporateMACWindow)
 print("\n#############################################################################==#############################################################################\n")
 totalOff()
-getAllPacketsWindow(windows)
 print("\n#############################################################################==#############################################################################\n")
-#getFinalResult()
-
-for i in windows:
-    print(len(i))
+getFinalResult()
+print("\n#############################################################################==#############################################################################\n")
+getAllPacketsWindow(clearWindows)
