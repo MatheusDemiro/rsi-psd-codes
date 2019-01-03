@@ -108,7 +108,13 @@ def getFinalResult():
         print("Janela %d: %d enderecos MACs a serem considerados."%(i+1, abs(len(windows[i])-aux)))
     return
 
-#Metodo que retorna todos os arrays e dicionarios utilizados para analise
+#Metodo que salva as janelas limpas
+def saveWindows(windows):
+    arq = open("CLEAR_WINDOWS.pickle", "wb")
+    p.dump(windows, arq)
+    arq.close()
+
+#Metodo que retorna o array com todas as janelas de tempo
 def openWindows():
     arq = open("WINDOWS.pickle", "rb")
 
@@ -119,15 +125,14 @@ def openWindows():
 
 allIntelCorporateMAC, fakeMACWindow, intelCorporateMACWindow = [], [],[]
 windows = openWindows()
-clearWindows = clearMAC(windows)
-off = {}
+saveWindows(clearMAC(windows))
 
-analysisFakeMACWindows(fakeMACWindow)
-print("\n#############################################################################==#############################################################################\n")
-analysisIntelCorporateMAC(intelCorporateMACWindow)
-print("\n#############################################################################==#############################################################################\n")
-totalOff()
-print("\n#############################################################################==#############################################################################\n")
-getFinalResult()
-print("\n#############################################################################==#############################################################################\n")
-getAllPacketsWindow(clearWindows)
+# off = {}
+#
+# analysisFakeMACWindows(fakeMACWindow)
+# print("\n#############################################################################==#############################################################################\n")
+# analysisIntelCorporateMAC(intelCorporateMACWindow)
+# print("\n#############################################################################==#############################################################################\n")
+# totalOff()
+# print("\n#############################################################################==#############################################################################\n")
+# getFinalResult()
