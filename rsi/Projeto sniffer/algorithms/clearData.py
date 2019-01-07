@@ -1,7 +1,6 @@
 import pickle as p
 
 class ClearData:
-
     def __init__(self, PATH_CLEAR_WINDOW, PATH_WINDOW):
         self.PATH_CLEAR_WINDOW = PATH_CLEAR_WINDOW
         self.PATH_WINDOW = PATH_WINDOW
