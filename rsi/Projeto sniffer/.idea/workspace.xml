@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ba0f31-ff60-48dc-ab2b-e5f5ef9eef66" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sniffer_rsi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sniffer_rsi.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/baseline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algorithms/clearData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algorithms/collectData.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WINDOWS.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/WINDOWS.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analyzeData.py" beforeDir="false" afterPath="$PROJECT_DIR$/analyzeData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clearData.py" beforeDir="false" afterPath="$PROJECT_DIR$/clearData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLEAR_WINDOWS.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/Data structure/CLEAR_WINDOWS.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COLETA_PBD_13-12-18.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/COLETA_PBD_13-12-18.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/COLETA_PBD_21-12-18.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Data/COLETA_PBD_21-12-18.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WINDOWS.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/Data structure/WINDOWS.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyzeData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clearData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/connection_serial.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/connection_serial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_sniffer.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/result.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,68 +30,67 @@
         <counts>
           <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="12" />
-          <entry key="py" value="1532" />
+          <entry key="dummy" value="19" />
+          <entry key="py" value="2865" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1544" />
+          <entry key="PLAIN_TEXT" value="19" />
+          <entry key="Python" value="2877" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="1" />
+          <entry key="py" value="5" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="1" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="5" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analyzeData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
-              <folding>
-                <marker date="1546546195393" expanded="true" signature="4408:4496" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clearData.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/result.py">
+        <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="255">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
-                <marker date="1546546436530" expanded="true" signature="823:962" ph="..." />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/algorithms/result.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+              <folding>
+                <marker date="1546880408572" expanded="true" signature="63:94" ph="..." />
+                <marker date="1546880408572" expanded="true" signature="1233:1242" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Data/baseline.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -103,6 +109,7 @@
       <find>da:a1:19:34:24:9f</find>
       <find>02:05:f8</find>
       <find>98:39:8e:eb:4c:a3</find>
+      <find>1544702099</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -115,9 +122,15 @@
         <option value="$PROJECT_DIR$/test_window.py" />
         <option value="$PROJECT_DIR$/teste.py" />
         <option value="$PROJECT_DIR$/clearWindow.py" />
-        <option value="$PROJECT_DIR$/clearData.py" />
         <option value="$PROJECT_DIR$/analyzeData.py" />
+        <option value="$PROJECT_DIR$/backup.py" />
+        <option value="$PROJECT_DIR$/Data/baseline.py" />
+        <option value="$PROJECT_DIR$/collectData.py" />
+        <option value="$PROJECT_DIR$/clearData.py" />
         <option value="$PROJECT_DIR$/result.py" />
+        <option value="$PROJECT_DIR$/algorithms.py" />
+        <option value="$PROJECT_DIR$/algorithms/result.py" />
+        <option value="$PROJECT_DIR$/run.py" />
       </list>
     </option>
   </component>
@@ -135,7 +148,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -143,15 +155,28 @@
               <item name="Projeto sniffer" type="b2602c69:ProjectViewProjectNode" />
               <item name="Projeto sniffer" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Projeto sniffer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projeto sniffer" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\algorithms" />
+      <recent name="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\Data structure" />
+      <recent name="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\Data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -165,28 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.result">
-    <configuration name="analyzeData" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="sniffer_rsi" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyzeData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.run">
     <configuration name="clearData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sniffer_rsi" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,7 +203,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/clearData.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\algorithms\clearData.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="collectData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sniffer_rsi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\algorithms\collectData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,7 +245,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/result.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\UFRPE\Documents\GitKraken\rsi-psd-codes\rsi\Projeto sniffer\algorithms\result.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sniffer_rsi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,13 +277,15 @@
     </configuration>
     <list>
       <item itemvalue="Python.clearData" />
-      <item itemvalue="Python.analyzeData" />
       <item itemvalue="Python.result" />
+      <item itemvalue="Python.run" />
+      <item itemvalue="Python.collectData" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
+        <item itemvalue="Python.collectData" />
         <item itemvalue="Python.result" />
-        <item itemvalue="Python.analyzeData" />
         <item itemvalue="Python.clearData" />
       </list>
     </recent_temporary>
@@ -266,13 +314,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18651211" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3470716" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3470716" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -290,42 +339,82 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_sniffer.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection_serial.py">
+    <entry file="file://$PROJECT_DIR$/algorithms/connection_serial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyzeData.py">
+    <entry file="file://$PROJECT_DIR$/data_sniffer.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+        <state relative-caret-position="51">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/clearData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           <folding>
-            <marker date="1546546195393" expanded="true" signature="4408:4496" ph="..." />
+            <marker date="1546880208246" expanded="true" signature="256:262" ph="..." />
+            <marker date="1546880208246" expanded="true" signature="1442:1542" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clearData.py">
+    <entry file="file://$PROJECT_DIR$/algorithms/collectData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        <state relative-caret-position="51">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1546879851443" expanded="true" signature="93:99" ph="..." />
+            <marker date="1546879851443" expanded="true" signature="1120:1129" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result.py">
+    <entry file="file://$PROJECT_DIR$/Data/COLETA_PBD_21-12-18.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/COLETA_PBD_13-12-18.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" lean-forward="true" selection-start-column="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/baseline.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/result.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
           <folding>
-            <marker date="1546546436530" expanded="true" signature="823:962" ph="..." />
+            <marker date="1546880408572" expanded="true" signature="63:94" ph="..." />
+            <marker date="1546880408572" expanded="true" signature="1233:1242" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

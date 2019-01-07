@@ -2,7 +2,7 @@ import pickle as p
 
 #Metodo que retorna o array com todas as janelas de tempo
 def openWindows():
-    arq = open("CLEAR_WINDOWS.pickle", "rb")
+    arq = open("Data structure\\CLEAR_WINDOWS.pickle", "rb")
 
     temp = p.load(arq)
     arq.close()
