@@ -1,8 +1,8 @@
-#/usr/bin/env python
 import pika
 import json
 import paho.mqtt.client as mqtt
 
+#Credenciais do thingsboard local
 THINGSBOARD_HOST = '172.16.207.69'
 ACCESS_TOKEN = 'RgfJz9s7aSbZGTo28xn5'
 
@@ -13,10 +13,10 @@ channel = connection.channel()
 
 client = mqtt.Client()
 
-#Set access token
+#Adicionando access token
 client.username_pw_set(ACCESS_TOKEN)
 
-#Connect to ThingsBoard using default MQTT port and 60 seconds keepalive interval
+#Connectando ao ThingsBoard atraves da porta MQTT padrao e com 60 segundos de keepalive
 client.connect(THINGSBOARD_HOST, 18830, 60)
 
 client.loop_start()

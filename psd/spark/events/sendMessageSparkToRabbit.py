@@ -1,11 +1,8 @@
 import pika
-import ast
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='localhost'))
-# credentials = pika.PlainCredentials('vwcm', 'vwcm')
-# connection = pika.BlockingConnection(pika.ConnectionParameters(
-#               'localhost', 5672, 'psd', credentials))
+        host='localhost', port=5672))
+
 channel = connection.channel()
 channel.exchange_declare(exchange='amq.topic',
                          exchange_type='topic', durable=True)
@@ -17,11 +14,10 @@ def convertMessage(data):
       values+=v+','
     return "%s\n%s"%(keys[:-1], values[:-1])
 
-def sendMessage(dictionary):
-    body = convertMessage(ast.literal_eval(dictionary)) #Passando dict como parâmetro
+def sendMessage(body):
     channel.basic_publish(
-            exchange='amq.topic',  # amq.topic as exchange
-            routing_key='hello',   # Routing key used by producer
+            exchange='amq.topic',  #Usando amq.topic como exchange
+            routing_key='hello',   #Routing key usada pelo produtor
             body=body
         )
-    return "[X] Mensagem enviada com sucesso!"+dictionary
+    return "[X] Mensagem enviada com sucesso!"+body

@@ -22,13 +22,3 @@ try:
 finally:
     table.close()
     newTable.close()
-
-'''
-#Reverse engineering
-from datetime import datetime
-a = open("arquivos/newCassandra2.txt","r")
-b = a.readlines()
-a.close()
-for i in b:
-    print(datetime.utcfromtimestamp(int(i[0:-1])).strftime('%m/%d/%Y %H:%M:%S'))
-'''

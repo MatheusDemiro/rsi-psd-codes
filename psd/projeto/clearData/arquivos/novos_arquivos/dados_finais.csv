@@ -1,4 +1,4 @@
-ts,lat,long,tbs-pasto,ur-pasto,tgn-pasto,tpo-pasto,tbs-sombra,ur-sombra,tgn-sombra,tpo-sombra,posicao,local,classe
+ts,lat,long,tbs_pasto,ur_pasto,tgn_pasto,tpo_pasto,tbs_sombra,ur_sombra,tgn_sombra,tpo_sombra,posicao,local,classe
 1477450800,-8.61973,-36.61312,18.485,82.225,18.200,15.359,18.081,87.919,32.846,16.069,0,0,comendo
 1477451400,-8.61972,-36.61313,18.461,82.303,18.200,15.349,18.129,87.859,32.742,16.105,0,0,comendo
 1477452000,-8.61974,-36.61312,18.461,82.303,18.200,15.349,18.129,87.859,32.742,16.105,0,0,comendo

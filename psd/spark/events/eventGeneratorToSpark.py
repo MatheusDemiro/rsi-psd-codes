@@ -6,10 +6,10 @@ data_table = open("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/c
 
 try:
     data = csv.reader(data_table, delimiter=";")
-    columns = next(data)[0].split(",")[:-1]
+    next(data)
     for row in data:
-        print(sendMessage(str(dict(zip(columns, row[0].split(",")[:-1])))))  # Publicando mensagem
         time.sleep(15)
+        print(sendMessage(",".join(row[0].split(",")[:-1])))  # Publicando mensagem
 finally:
     data_table.close()
-    connection.close()  # Fechando conexao com o servidor rabbit
+    connection.close()  #Fechando conexao com o servidor rabbit

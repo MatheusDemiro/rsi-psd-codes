@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.IndexToString","timestamp":1544035274423,"sparkVersion":"2.4.0","uid":"IndexToString_a87ef093825f","paramMap":{"labels":["comendo","ocio","ruminando","andando","bebendo"],"outputCol":"predictedLabel","inputCol":"prediction"},"defaultParamMap":{"outputCol":"IndexToString_a87ef093825f__output"}}

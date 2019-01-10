@@ -6,12 +6,12 @@ from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 
-def convertColumn(df, names, newType):
+def convertColumn(df, names):
     for name in names:
         if name == 'ts':
             df = df.withColumn(name, df[name].cast(IntegerType()))
         else:
-            df = df.withColumn(name, df[name].cast(newType))
+            df = df.withColumn(name, df[name].cast(DoubleType()))
     return df
 
 findspark.init("/home/rsi-psd-vm/spark-2.4.0-bin-hadoop2.7")
@@ -23,7 +23,7 @@ spark = SparkSession.builder\
 
 data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/projeto/clearData/arquivos/novos_arquivos/dados_finais.csv")
 
-data = convertColumn(data, data.columns[:-1], DoubleType())
+data = convertColumn(data, data.columns[:-1])
 
 vecAssembler = VectorAssembler(inputCols=data.columns[:-1], outputCol="features").setHandleInvalid("keep")
 
@@ -42,7 +42,7 @@ pipeline = Pipeline(stages=[vecAssembler, labelIndexer, featureIndexer, randomFo
 
 randomForestModel = pipeline.fit(trainingData)
 
-randomForestModel.write().overwrite().save("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes-master/psd/spark/model")
+randomForestModel.write().overwrite().save("/home/rsi-psd-vm/Documents/GitHub/rsi-psd-codes/psd/spark/model")
 
 predictions = randomForestModel.transform(testData)
 
