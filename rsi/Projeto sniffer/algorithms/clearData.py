@@ -1,9 +1,8 @@
 import pickle as p
 
 class ClearData:
-    def __init__(self, PATH_CLEAR_WINDOW, PATH_WINDOW):
-        self.PATH_CLEAR_WINDOW = PATH_CLEAR_WINDOW
-        self.PATH_WINDOW = PATH_WINDOW
+    def __init__(self, WINDOW_PATH):
+        self.WINDOW_PATH = WINDOW_PATH
         self.fakeMACWindow = []
         self.intelCorporateMACWindow = []
 
@@ -35,13 +34,15 @@ class ClearData:
 
     #Metodo que salva as janelas limpas
     def saveWindows(self, windows):
-        arq = open(self.PATH_CLEAR_WINDOW, "wb")
+        arq = open(self.WINDOW_PATH, "wb")
         p.dump(windows, arq)
         arq.close()
 
+        return windows
+
     #Metodo que retorna o array com todas as janelas de tempo
     def openWindows(self):
-        arq = open(self.PATH_WINDOW, "rb")
+        arq = open(self.WINDOW_PATH, "rb")
         temp = p.load(arq)
         arq.close()
         return temp
@@ -49,4 +50,4 @@ class ClearData:
     #Metodo que executa o algoritmo de limpeza
     def execution(self):
         windows = self.openWindows()
-        self.saveWindows(self.clearMAC(windows))
+        return self.saveWindows(self.clearMAC(windows))
