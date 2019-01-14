@@ -18,22 +18,6 @@ class Baseline:
         arq.close()
         return temp
 
-    # #Metodo que salva os MACS unicos
-    # def saveUniqueMacs(self): #Filtrar pelo valor da frequência
-    #     arq = open("data_structure\\UNIQUE_MACS", "wb")
-    #     p.dump(self.UNIQUE_MACS, arq)
-    #     arq.close()
-    #     return self.UNIQUE_MACS
-
-    # def fillUniqueMacs(self, data):
-    #     print(data)
-    #     for mac in data:
-    #         if mac not in self.UNIQUE_MACS and data[mac][0] <= self.AVERAGE_RSSI:
-    #             if data[mac][1] >= self.AVERAGE_FREQ:
-    #                 print(mac)
-    #                 self.UNIQUE_MACS.append(mac)
-    #     return self.UNIQUE_MACS
-
     #Metodo que salva as janelas limpas
     def saveWindows(self, baseline):
         arq = open(self.BASELINE_PATH, "wb")

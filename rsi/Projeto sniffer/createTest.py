@@ -1,7 +1,7 @@
 from algorithms.Classifier import Classifier
 from algorithms.CreateWindow import CreateWindow
 
-WINDOW_SIZE = 60 #1 minuto
+WINDOW_SIZE = 120 #1 minuto
 CLEAR_COLLECTION_PATH = "data_structure\\(CLEAR)COLETA_PBD_13-12-18"
 BASELINE_PATH = "data_structure\\BASELINE.pickle"
 

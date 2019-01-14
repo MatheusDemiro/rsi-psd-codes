@@ -4,6 +4,7 @@ class CreateWindow:
     def __init__(self, COLLECTION_PATH, WINDOW_SIZE):
         self.COLLECTION_PATH = COLLECTION_PATH
         self.WINDOW_SIZE = WINDOW_SIZE
+        self.UNIQUE_MACS = []
 
     #Metodo que retorna as informacoes da primeira linha do arquivo para servir como referencia ao andamenta da limpeza dos dados
     def header(self, data):
@@ -21,6 +22,20 @@ class CreateWindow:
         temp = p.load(arq)
         arq.close()
         return temp
+
+    #Metodo que salva os MACS unicos
+    def saveUniqueMacs(self): #Filtrar pelo valor da frequência
+        arq = open("data_structure\\UNIQUE_MACS", "wb")
+        p.dump(self.UNIQUE_MACS, arq)
+        arq.close()
+        return self.UNIQUE_MACS
+
+    def fillUniqueMacs(self, data):
+        for mac in data:
+            if mac not in self.UNIQUE_MACS:
+                    print(mac)
+                    self.UNIQUE_MACS.append(mac)
+        return self.UNIQUE_MACS
 
     #Metodo que calcula a media do RSSI de cada tupla ([RSSI],freq)
     def average(self, dic):
