@@ -1,53 +1,46 @@
 import pickle as p
+import codecs
 
 class ClearData:
-    def __init__(self, WINDOW_PATH):
-        self.WINDOW_PATH = WINDOW_PATH
+    def __init__(self, COLLECTION_PATH, CLEAR_COLLECTION_PATH):
+        self.COLLECTION_PATH = COLLECTION_PATH
+        self.CLEAR_COLLECTION_PATH = CLEAR_COLLECTION_PATH
         self.fakeMACWindow = []
         self.intelCorporateMACWindow = []
 
     #Metodo que retorna a lista com as janelas de captura limpas
-    def clearMAC(self, windows):
-        count = 0
-        clearWindows = []
-        while count < len(windows):
-            auxFake, auxWindow, auxIntel = [], {}, []
-            for MAC in windows[count]:
-                mac = MAC.split(":")
-                result = "0x" + mac[0]
-                if int(result, 16) & 2 == 2:  #MAC local (falso)
-                    auxFake.append(MAC)
-                    continue
-                else:  #MAC universal
-                    if ":".join(mac[:3]) == "60:67:20":  #Se for do fornecedor "Intel Corporate"
-                        if MAC not in auxIntel:
-                            auxIntel.append(MAC)
-                            continue
-                auxWindow[MAC] = windows[count][MAC]
-            count+=1
-            if auxFake == []:
-                auxFake.append(0)
-            elif auxIntel == []:
-                auxIntel.append(0)
-            self.fakeMACWindow.append(auxFake);clearWindows.append(auxWindow);self.intelCorporateMACWindow.append(auxIntel)
-        return clearWindows
+    def clearMAC(self, data):
+        clearFile = []
+        auxFake, auxIntel = [], []
+        for MAC in data:
+            mac = MAC.split(",")[1].split(":")
+            result = "0x" + mac[0]
+            if int(result, 16) & 2 == 2:  #MAC local (falso)
+                auxFake.append(MAC)
+                continue
+            else:  #MAC universal
+                if ":".join(mac[:3]) == "60:67:20":  #Se for do fornecedor "Intel Corporate"
+                    if MAC not in auxIntel:
+                        auxIntel.append(MAC)
+                        continue
+            clearFile.append(MAC)
+        return clearFile
 
     #Metodo que salva as janelas limpas
-    def saveWindows(self, windows):
-        arq = open(self.WINDOW_PATH, "wb")
-        p.dump(windows, arq)
+    def saveWindows(self, data):
+        arq = open(self.CLEAR_COLLECTION_PATH, "wb")
+        p.dump(data, arq)
         arq.close()
-
-        return windows
+        return data
 
     #Metodo que retorna o array com todas as janelas de tempo
-    def openWindows(self):
-        arq = open(self.WINDOW_PATH, "rb")
-        temp = p.load(arq)
+    def openFile(self):
+        arq = codecs.open(self.COLLECTION_PATH, "rb", encoding='utf-8')
+        temp = arq.readlines()
         arq.close()
         return temp
 
     #Metodo que executa o algoritmo de limpeza
     def execution(self):
-        windows = self.openWindows()
-        return self.saveWindows(self.clearMAC(windows))
+        data = self.openFile()
+        return self.saveWindows(self.clearMAC(data))

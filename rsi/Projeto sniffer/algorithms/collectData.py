@@ -6,9 +6,11 @@ import serial
 def setTimestamp(data):
         return data.decode()[:-2] + "," + str(int(time.time()))
 
+FILE_NAME = "data_sniffer.txt"
+
 if __name__ == "__main__":
     comport = serial.Serial('com10', 115200)
-    arq = open("data structure\\data_sniffer.txt", "w+")
+    arq = open("data_structure\\"+FILE_NAME, "w+")
 
     while True:
         try:
