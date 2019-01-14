@@ -62,6 +62,7 @@ class Classifier:
         group = lengthC//lengthB
         comparation = self.grouping(comparation, group)
         totalErrors, average = 0, 0 #Quantidade total e media dos erros, respectivamente
+        countMac = 1
         for mac in baseline:
             errorsMAC = 0 #Quantidade de erros por mac
             value = baseline[mac]
@@ -74,8 +75,9 @@ class Classifier:
                         errorsMAC += 1
                         totalErrors += 1
             percentage = (errorsMAC * 100) / lengthB #Ou len(comparation[mac]), mas este possui um dado a mais que o baseline[mac]
-            print("MAC ADDRESS %d: %s. Error: %.2f%%" % (totalErrors, mac, percentage))
+            print("MAC ADDRESS %d: %s. Error: %.2f%%" % (countMac, mac, percentage))
             average += percentage
+            countMac += 1
         print("\nAVERAGE: %.2f%%" % (average / totalErrors))
         # average, count = 0,1
         # for mac in comparation:
