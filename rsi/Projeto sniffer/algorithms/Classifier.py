@@ -63,11 +63,11 @@ class Classifier:
         comparation = self.grouping(comparation, group)
         totalErrors, average = 0, 0 #Quantidade total e media dos erros, respectivamente
         countMac = 1
-        for mac in baseline:
+        for mac in comparation:
             errorsMAC = 0 #Quantidade de erros por mac
-            value = baseline[mac]
-            if mac in comparation:
-                value2 = comparation[mac]
+            value = comparation[mac]
+            if mac in baseline:
+                value2 = baseline[mac]
                 for i in range(lengthB):
                     # if mac == "50:92:b9:91:20:2e":
                     #     print(value, value2)
@@ -78,7 +78,7 @@ class Classifier:
             print("MAC ADDRESS %d: %s. Error: %.2f%%" % (countMac, mac, percentage))
             average += percentage
             countMac += 1
-        print("\nAVERAGE: %.2f%%" % (average / totalErrors))
+        print("\nAVERAGE: %.2f%%" % (average / len(comparation)))
         # average, count = 0,1
         # for mac in comparation:
         #     percentage = (comparation[mac].count(0) * 100) / len(comparation[mac])
