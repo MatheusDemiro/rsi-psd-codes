@@ -1,9 +1,10 @@
 import pickle as p
 
 class CreateWindow:
-    def __init__(self, COLLECTION_PATH, WINDOW_SIZE):
+    def __init__(self, COLLECTION_PATH, WINDOW_SIZE, UNIQUE_MACS_PATH):
         self.COLLECTION_PATH = COLLECTION_PATH
         self.WINDOW_SIZE = WINDOW_SIZE
+        self.UNIQUE_MACS_PATH = UNIQUE_MACS_PATH
         self.UNIQUE_MACS = []
 
     #Metodo que retorna as informacoes da primeira linha do arquivo para servir como referencia ao andamenta da limpeza dos dados
@@ -25,7 +26,7 @@ class CreateWindow:
 
     #Metodo que salva os MACS unicos
     def saveUniqueMacs(self): #Filtrar pelo valor da frequência
-        arq = open("data_structure\\UNIQUE_MACS", "wb")
+        arq = open(self.UNIQUE_MACS_PATH, "wb")
         p.dump(self.UNIQUE_MACS, arq)
         arq.close()
         return self.UNIQUE_MACS
@@ -33,7 +34,6 @@ class CreateWindow:
     def fillUniqueMacs(self, data):
         for mac in data:
             if mac not in self.UNIQUE_MACS:
-                    print(mac)
                     self.UNIQUE_MACS.append(mac)
         return self.UNIQUE_MACS
 
@@ -62,6 +62,8 @@ class CreateWindow:
                     dic[currentMAC] = ([int(RSSI)], 1)
             else:
                 windows.append(self.average(dic))
+                self.fillUniqueMacs(dic)
                 windowTS = int(TS)
                 dic = {MAC: ([int(RSSI)], 1)}  # Preparando dicionario para a proxima janela
+        self.saveUniqueMacs()
         return windows

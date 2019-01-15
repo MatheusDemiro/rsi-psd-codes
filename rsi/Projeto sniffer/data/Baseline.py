@@ -42,10 +42,3 @@ class Baseline:
                             baseline[mac][index] = 1
                             baseline[mac][index+1] = 1
         return baseline
-
-    #Metodo que executa as funcionalidadse da classe
-    def execution(self):
-        createWindow = CreateWindow(self.COLLECTION_PATH, self.WINDOW_SIZE)
-        baseline = self.generateClassifier(createWindow.execution())
-        self.saveWindows(baseline)
-        return baseline
