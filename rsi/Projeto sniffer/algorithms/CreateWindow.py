@@ -29,7 +29,6 @@ class CreateWindow:
         arq = open(self.UNIQUE_MACS_PATH, "wb")
         p.dump(self.UNIQUE_MACS, arq)
         arq.close()
-        return self.UNIQUE_MACS
 
     def fillUniqueMacs(self, data):
         for mac in data:

@@ -4,11 +4,11 @@ from algorithms.CreateWindow import CreateWindow
 
 
 class Baseline:
-    def __init__(self, COLLECTION_PATH, BASELINE_PATH, WINDOW_SIZE, AVERAGE_FREQ, AVERAGE_RSSI):
+    def __init__(self, COLLECTION_PATH, BASELINE_PATH, WINDOW_SIZE, FREQUENCY, AVERAGE_RSSI):
         self.COLLECTION_PATH = COLLECTION_PATH
         self.WINDOW_SIZE = WINDOW_SIZE
         self.BASELINE_PATH = BASELINE_PATH
-        self.AVERAGE_FREQ = AVERAGE_FREQ
+        self.FREQUENCY = FREQUENCY
         self.AVERAGE_RSSI = AVERAGE_RSSI
 
     #Metodo que abre a colecao de dados
@@ -33,7 +33,7 @@ class Baseline:
             for mac in windows[index]:
                 timeWindow = windows[index]
                 if mac in windows[index+1] and timeWindow[mac][0] <= self.AVERAGE_RSSI:
-                    if timeWindow[mac][1] >= self.AVERAGE_FREQ:
+                    if timeWindow[mac][1] >= self.FREQUENCY:
                         if mac not in baseline:
                             baseline[mac] = [0]*length
                             baseline[mac][index] = 1
