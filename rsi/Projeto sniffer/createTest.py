@@ -1,15 +1,15 @@
 from algorithms.Classifier import Classifier
 from algorithms.CreateWindow import CreateWindow
 
-WINDOW_SIZE = 30 #30 segundos
+WINDOW_SIZE = 60
 CLEAR_COLLECTION_PATH = "data_structure\\(CLEAR)COLETA_PBD_13-12-18"
 BASELINE_PATH = "data_structure\\BASELINE.pickle"
 UNIQUE_MACS_PATH = "data_structure\\UNIQUE_MACS_PBD_13-12-18"
 
-FREQUENCY = 5
-AVERAGE_RSSI = -60
+FREQUENCY = 10
+AVERAGE_RSSI = -70
 
-print("%d segundos"%(WINDOW_SIZE))
+print("\n%d segundos"%(WINDOW_SIZE))
 #Se o arquivo de execucao for o modulo principal
 if __name__ == "__main__":
     #Criando instancias e chamando os respectivos metodos de execucao
