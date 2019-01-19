@@ -60,7 +60,7 @@ if __name__ == "__main__":
             #Criando instancia singleton do SparkSession
             spark = getSparkSessionInstance(rdd.context.getConf())
 
-            #Concertendo RDD[String] para RDD[Row]
+            #Convertendo RDD[String] para RDD[Row]
             rowRDD = rdd.map(lambda p: Row(ts=p[0],lat=p[1],long=p[2],tbs_pasto=p[3],ur_pasto=p[4],
                                                      tgn_pasto=p[5],tpo_pasto=p[6],tbs_sombra=p[7],ur_sombra=p[8],
                                                      tgn_sombra=p[9],tpo_sombra=p[10],posicao=p[11],local=p[12]))

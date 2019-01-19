@@ -18,6 +18,3 @@ if __name__ == "__main__":
 
     classifier = Classifier(BASELINE_PATH, WINDOWS, FREQUENCY, AVERAGE_RSSI)
     exe = classifier.execution()
-
-"""OBS.: Todos os resultados acima estão corretos segundo a comparação com o baseline, apesar de alguns resultados 
-apresentarem listas com zeros devido a janela não ser divisível por 5"""
